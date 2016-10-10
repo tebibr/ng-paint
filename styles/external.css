@@ -1,0 +1,620 @@
+*{
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+}
+
+body{
+	background:#333;
+	font-family:sans-serif;
+	height:100%;
+	width:100%;
+	overflow-y:hidden;
+}
+
+p{
+	font-size:1em;
+}
+
+.container{
+	position:absolute;
+	width:100%;
+	height:95%;
+	top:5%;
+	background:#333;
+}
+
+.center-container{
+	position:absolute;
+	left:50%;
+	top:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+}
+
+/*header*/
+
+header{
+	position:absolute;
+	width:100%;
+	height:5%;
+	background:#333;
+}
+
+h1{
+	position:absolute;
+	width:100%;
+	text-align:center;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	transform:translateY(-50%);
+	color:#fff;;
+	font-size:1em;
+	font-weight:400;
+}
+
+header i.fa{
+	color:#CACACA;
+	position:absolute;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	transform:translateY(-50%);
+	cursor:pointer;
+	font-size:1em;
+}
+
+header .fa-chevron-left{
+	left:10%;
+}
+
+header .fa-chevron-right{
+	right:10%;
+	
+}
+
+header .fa-refresh{
+	left:20%;
+}
+
+header .fa-paint-brush{
+	right:10%;
+}
+
+/*profile*/
+
+.toolbar{
+	position:absolute;
+	height:10%;
+	width:100%;
+	background:#CACACA;
+}
+
+.toolbar h2{
+	font-weight:400;
+	position:absolute;
+	left:50%;
+	top:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	font-size:1.25em;
+	color:#fff;
+}
+
+.gallery{
+	position:absolute;
+	height:90%;
+	width:100%;
+	top:10%;;
+	background:#CACACA;
+	overflow-y:scroll;
+}
+
+.painting{
+	width:172px;
+	height:172px;
+	float:left;
+	background:#fff;
+	overflow:hidden;
+	position:relative;
+	margin:10px 10px 10px 10px;
+	cursor:pointer;
+}
+
+.overlay{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background:#000;
+	opacity:0.75;
+	top:50%;
+	transform:translateY(-50%);
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+}
+
+.gallery .fa-trash{
+	position:absolute;
+	outline:none;
+	right:20px;
+	bottom:20px;
+	font-size:1em;
+	color:#fff;
+	cursor:pointer;
+}
+
+.gallery .fa-times{
+	position:absolute;
+	outline:none;
+	left:20px;
+	top:20px;
+	font-size:1em;
+	color:#fff;
+	cursor:pointer;
+}
+
+.big-painting{
+	width:325px;
+	height:325px;
+	position:fixed;
+	background:#fff;
+	overflow:hidden;
+	top:58%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+}
+
+/*palette*/
+
+.palette{
+	position:absolute;
+	width:30%;
+	height:25%;
+	background:#CACACA;
+	top:75%;
+	left:70%;
+	overflow-y:scroll;
+	
+}
+
+.my-color{
+	width:40px;
+	height:40px;
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-ms-border-radius:20px;
+	-o-border-radius:20px;
+	border-radius:20px;
+	position:relative;
+	margin:5px 0 0 5px;
+	border:1px solid #fff;
+	float:left;
+}
+
+.my-color:hover{
+	box-shadow: 0 0 10px #fff;
+}
+
+.my-color .fa-times{
+	color:#fff;
+	position:absolute;
+	top:50%;
+	right:-3px;
+	-webkit-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	transform:translateY(-50%);
+	display:none;
+	cursor:pointer;
+	text-shadow:
+		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.my-color:hover .fa-times{
+	display:block;
+}
+
+.add-border{
+	width:40px;
+	height:40px;
+	position:absolute;
+	-webkit-border-radius:20px;
+	-ms-border-radius:20px;
+	-moz-border-radius:20px;
+	-o-border-radius:20px;
+	border-radius:20px;
+	border:2px solid #fff;
+	box-shadow: 0 0 10px #fff;
+}
+
+.add-color{
+	position:relative;
+	width:90%;
+	height:25px;
+	position:relative;
+	border:1px solid #fff;
+	left:50%;
+	-webkit-transform:translateX(-50%);
+	-moz-transform:translateX(-50%);
+	-ms-transform:translateX(-50%);
+	-o-transform:translateX(-50%);
+	transform:translateX(-50%);
+	cursor:pointer;
+	border-radius:20px;
+	margin-top:5px;
+}
+
+.add-color:hover{
+	border:2px solid #fff;
+	box-shadow: 0 0 10px #fff;
+}
+
+.add-color p{
+	position:absolute;
+	top:50%;
+	width:100%;
+	text-align:center;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	transform:translateY(-50%);
+	color:#fff;
+	text-shadow:
+		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+/*canvas*/
+
+.canvas{
+	position:absolute;
+	width:325px;
+	height:325px;
+	background:#fff;
+	left:50%;
+	top:40%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	overflow:hidden;
+	cursor:none;
+}
+
+.paintbrush{
+	position:absolute;
+	border-radius:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	display:inline;
+	-ms-pointer-events:none;
+	-webkit-pointer-events:none;
+	-moz-pointer-events:none;
+	-o-pointer-events:none;
+	pointer-events:none;
+}
+
+.cursor{
+	border:1px solid #000;
+	box-shadow: 0 0 1px #fff;
+	display:none;
+}
+
+.canvas:hover .cursor{
+	display:block;
+}
+
+.instructions{
+	-ms-pointer-events:none;
+	-webkit-pointer-events:none;
+	-moz-pointer-events:none;
+	-o-pointer-events:none;
+	pointer-events:none;
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+.instructions p{
+	position:absolute;
+	left:50%;
+	top:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	text-align:center;
+}
+
+/*sliders*/
+
+.my-sliders{
+	position:absolute;
+	width:70%;
+	height:25%;
+	top:75%;
+	background:#CACACA;
+	border-right:1px solid #666;
+}
+
+.size-input{
+	position:absolute;
+	width:100%;
+	height:20%;
+	border-bottom:1px solid #666;
+}
+
+.color-input{
+	position:absolute;
+	width:100%;
+	height:60%;
+	top:20%;
+	border-bottom:1px solid #666;
+}
+
+.opacity-input{
+	position:absolute;
+	width:100%;
+	height:20%;
+	top:80%;
+}
+
+.red,.green,.blue,.brush-size,.opacity{
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+	position:relative;
+	width:150px;
+	margin:5px;
+	outline:none;
+	display:block;
+}
+
+.green{
+	margin:15px 5px 15px 5px;
+}
+
+.my-sliders i{
+	font-size:0.8em;
+	color:#333;
+}
+
+.brush-icon-container{
+	width:100%;
+	height:33%;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	transform:translateY(-50%);
+	top:50%;
+	position:absolute;
+}
+
+.left-brush-icon-container{
+	width:10%;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	transform:translateY(-50%);
+	top:50%;
+	position:absolute;
+	margin-left:10%;
+}
+
+.right-brush-icon-container{
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	transform:translateY(-50%);
+	top:50%;
+	position:absolute;
+	right:0;
+	margin-right:10%;
+}
+
+.brush-icon-container i:nth-child(odd){
+	float:left;
+	margin-left:10%;
+}
+
+.brush-icon-container i:nth-child(even){
+	float:right;
+	margin-right:10%;
+}
+
+.left-brush-icon-container i, .right-brush-icon-container i{
+	display:block;
+}
+
+input[type=range]::-webkit-slider-thumb{
+	-webkit-appearance:none;
+	border:1px solid #333;
+	height:16px;
+	width:16px;
+	border-radius:8px;
+	background:#fff;
+	cursor:pointer;
+	-webkit-transform:translateY(-50%);
+	transform:translateY(-50%);
+}
+
+input[type=range]::-webkit-slider-runnable-track{
+	-webkit-appearance:none;
+	height:2px;
+}
+
+input[type=range]::-ms-thumb{
+	border:1px solid #333;
+	height:5px;
+	width:20px;
+	border-radius:5px;
+	background:#999;
+	cursor:pointer;
+	-ms-transform:translateY(0);
+	transform:translateY(0);
+}
+
+input[type=range]::-ms-fill-lower{
+	background:#fff;
+}
+
+input[type=range]::-ms-fill-upper{
+	background:#333;
+}
+
+input[type=range]::-ms-track{
+	height:5px;
+	color:transparent;
+}
+
+input[type=range]::-ms-tooltip{
+	display:none;
+}
+
+input[type=range]::-moz-range-thumb{
+	-moz-appearance:none;
+	border:1px solid #333;
+	height:16px;
+	width:16px;
+	border-radius:8px;
+	background:#fff;
+	cursor:pointer;
+}
+
+input[type=range]::-moz-range-track{
+	-moz-appearance:none;
+	height:2px;
+}
+
+.size-input .brush-icon-container i:first-child{
+	font-size:0.7em;
+}
+
+.size-input .brush-icon-container i:last-child{
+	font-size:0.9em;
+}
+
+.left-brush-icon-container i{
+	color:#000;
+}
+
+.right-brush-icon-container i:first-child{
+	color:#f00;
+}
+
+.right-brush-icon-container i:nth-child(2){
+	color:#0f0;
+}
+
+.right-brush-icon-container i:last-child{
+	color:#00f;
+}
+
+.opacity-input .brush-icon-container i:first-child{
+	opacity:0.25;
+}
+
+/*tooltips*/
+
+.tooltip{
+	background:#fff;
+	color:#333;
+	border-radius:5px;
+	padding:5px;
+	position:absolute;
+	top:90%;
+	opacity:0.75;
+	z-index:100;
+	font-size:0.65em;
+	display:none;
+}
+
+header:hover .tooltip{
+	display:block;
+}
+
+.signout-tooltip{
+	left:10%;
+}
+
+.paint-tooltip{
+	right:10%;
+}
+
+.back-tooltip{
+	left:10%;
+}
+
+.clear-tooltip{
+	left:20%;
+}
+
+.save-tooltip{
+	right:10%;
+}
+
+/*media*/
+
+@media screen and (min-width:600px){
+	.big-painting{
+		width:400px;
+		height:400px;
+	}
+
+	.red,.green,.blue,.brush-size,.opacity{
+		width:300px;
+	}
+}
+
+@media screen and (max-width:400px){
+	.big-painting{
+		width:290px;
+		height:290px;
+	}
+
+	.canvas{
+		width:290px;
+		height:290px;
+	}
+
+	.red,.green,.blue,.brush-size,.opacity{
+		width:125px;
+	}
+
+	header:hover .tooltip{
+		display:none;
+	}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='paintApp'>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href='styles/external.css' rel='stylesheet'>
+
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script src='scripts/ngTouch.js'></script>
+		<script src='scripts/external.js'></script>
+
+		<title>ng-paint</title>
+	</head>
+	<body ng-controller='AddColorController as acc'>
+	<!--header-->
+
+		<header>
+			<h1>ng-paint</h1>
+
+			<i class='fa fa-paint-brush' ng-click='acc.toPaint();'></i>
+			<div class='paint-tooltip tooltip'>paint</div>
+		</header>
+
+	<!--profile-->
+
+		<div class='container'>
+			<div class='toolbar'>
+				<h2>My Gallery</h2>
+			</div>
+
+			<div class='gallery'>
+				<div ng-repeat="painting in acc.paintingsArray track by $index" class='painting' ng-click='acc.enlargePainting(painting); acc.userHeader();'>
+					<div ng-repeat='brush in painting track by $index' class='paintbrush' ng-style='{"left":+brush.x+"%","top":+brush.y+"%","background":"rgb("+brush.red+","+brush.green+","+brush.blue+")","width":+brush.width+"%","height":+brush.height+"%","opacity":+brush.opacity}'></div>
+				</div>
+
+				<div class='overlay' ng-if='acc.enlarge' ng-click=' acc.enlarge=false'>
+					<i class='fa fa-times'></i>
+					<i class='fa fa-trash' ng-click='acc.removePainting();'></i>
+				</div>
+
+				<div class='big-painting' ng-if='acc.enlarge'>
+					<div ng-repeat='brush in acc.paintbrushArray track by $index' class='paintbrush' ng-style='{"left":+brush.x+"%","top":+brush.y+"%","background":"rgb("+brush.red+","+brush.green+","+brush.blue+")","width":+brush.width+"%","height":+brush.height+"%","opacity":+brush.opacity}'></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

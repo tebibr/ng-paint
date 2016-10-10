@@ -1,0 +1,106 @@
+<!doctype html>
+<html ng-app='paintApp'>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link href='styles/external.css' rel='stylesheet'>
+
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script src='scripts/ngTouch.js'></script>
+		<script src='scripts/external.js'></script>
+		
+		<title>ng-paint</title>
+	</head>
+	<body ng-controller='AddColorController as acc' ng-mouseup='acc.canDraw=false'>
+	<!--header-->
+
+		<header>
+			<h1>ng-paint</h1>
+
+			<i class='fa fa-chevron-left' ng-click='acc.toProfile();'></i>
+			<div class='save-tooltip tooltip'>save</div>
+
+			<i class='fa fa-refresh' ng-click='acc.clearCanvas();'></i>
+			<div class='clear-tooltip tooltip'>clear</div>
+
+			<i class='fa fa-chevron-right' ng-click='acc.saveCanvas();'></i>
+			<div class='back-tooltip tooltip'>gallery</div>
+		</header>
+
+
+	<!--paint-->
+
+		<div class='container'>
+		<!--canvas-->
+			
+			<div class='canvas' ng-mousedown='acc.canDraw=true;' ng-mouseup='acc.canDraw=false;' ng-mousemove='acc.brushCursor($event); acc.paintCanvas($event);' ng-touchmove='acc.canDraw=true; acc.touchCursor($event); acc.paintCanvas($event);'>
+				<div class='instructions' ng-if='acc.instruct'>
+					<p>add and select a colour to begin painting</p>
+				</div>
+
+				<div ng-repeat='brush in acc.paintbrushArray track by $index' class='paintbrush' ng-style='{"left":+brush.x+"%","top":+brush.y+"%","background":"rgb("+brush.red+","+brush.green+","+brush.blue+")","width":+brush.width+"%","height":+brush.height+"%","opacity":+brush.opacity}'></div>
+
+				<div class='paintbrush cursor' ng-style='{"width":+acc.brushSize+"%","height":+acc.brushSize+"%","background":"rgb("+acc.drawRed+","+acc.drawGreen+","+acc.drawBlue+")","left":+acc.brushX+"%","top":+acc.brushY+"%","opacity":+acc.setOpacity}'></div>
+			</div>
+
+		<!--palette-->
+			
+			<div class='palette'>
+				<div class='add-color' ng-style='{"background":"rgb("+acc.setRed+","+acc.setGreen+","+acc.setBlue+")"}' ng-click='acc.addColor(); acc.savePalette();'>
+					<p>add</p>
+				</div>
+
+				<div class='my-color' ng-repeat='color in acc.colorArray track by $index' ng-style='{"background":"rgb("+color.red+","+color.green+","+color.blue+")"}' ng-click='acc.getColor($index);'>
+					<div ng-if='acc.currIndex==$index' class='add-border'></div>
+					<i class='fa fa-times' ng-click='acc.removeColor($index); acc.savePalette();'></i>
+				</div>
+			</div>
+			
+		<!--sliders-->
+			
+			<div class='my-sliders'>
+				<div class='size-input'>
+					<div class='brush-icon-container'>
+						<i class='fa fa-paint-brush'></i>
+						<i class='fa fa-paint-brush'></i>
+					</div>
+
+					<div class='center-container'>
+						<input type=range class='brush-size' min='1' max='20' ng-model='acc.brushSize'>
+					</div>
+				</div>
+
+				<div class='color-input'>
+					<div class='left-brush-icon-container'>
+						<i class='fa fa-paint-brush'></i>
+						<i class='fa fa-paint-brush'></i>
+						<i class='fa fa-paint-brush'></i>
+					</div>
+					<div class='right-brush-icon-container'>
+						<i class='fa fa-paint-brush'></i>
+						<i class='fa fa-paint-brush'></i>
+						<i class='fa fa-paint-brush'></i>
+					</div>
+
+					<div class='center-container'>
+						<input class='red' type='range' min='0' max='255' ng-model='acc.setRed'>
+						<input class='green' type='range' min='0' max='255' ng-model='acc.setGreen'>
+						<input class='blue' type='range' min='0' max='255' ng-model='acc.setBlue'>
+					</div>						
+				</div>
+
+				<div class='opacity-input'>
+					<div class='brush-icon-container'>
+						<i class='fa fa-paint-brush'></i>
+						<i class='fa fa-paint-brush'></i>
+					</div>
+
+					<div class='center-container'>
+						<input class='opacity' type='range' min='0.05' max='1' step='0.05' ng-model='acc.setOpacity'>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
