@@ -34,7 +34,7 @@
 		<div class='container'>
 		<!--canvas-->
 			
-			<div class='canvas' ng-mousedown='acc.canDraw=true;' ng-mouseup='acc.canDraw=false;' ng-mousemove='acc.brushCursor($event); acc.paintCanvas($event);' ng-touchmove='acc.canDraw=true; acc.touchCursor($event); acc.paintCanvas($event);'>
+			<div class='canvas' ng-mousedown='acc.canDraw=true; acc.paintCanvas($event);' ng-mouseup='acc.canDraw=false;' ng-mousemove='acc.brushCursor($event); acc.paintCanvas($event);' ng-touchstart='acc.canDraw=true; acc.touchCursor($event); acc.paintCanvas($event);' ng-touchmove='acc.touchCursor($event); acc.paintCanvas($event);'>
 				<div class='instructions' ng-if='acc.instruct'>
 					<p>add and select a colour to begin painting</p>
 				</div>
